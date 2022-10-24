@@ -11,6 +11,7 @@
     margin-right: auto; */
     text-align: center;
     color: #e61561;
+    margin-bottom: 10px;
 }
 
 .display {
@@ -24,13 +25,29 @@
     border-radius: 5px;
 }
 
+.idk {
+    color: white;
+    background-color: gray;
+    text-align: right;
+    margin-right: 3px;
+}
+
 .calcbut {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mainbuttons {
     display: grid;
     width: 300px;
     grid-template-columns: 3fr 1fr;
     margin-left: auto;
     margin-right: auto;
 }
+
+
 
 .numbers {
     display: grid;
@@ -46,8 +63,8 @@
 }
 
 button {
-    font-size: 25px;
-    padding: 7%;
+    font-size: 20px;
+    padding: 10%;
     border: none;
     border-radius: 5px;
     background-color: aqua;
@@ -65,4 +82,13 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.delorclr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    grid-gap: 4px;
 }

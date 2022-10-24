@@ -58,27 +58,27 @@ nine.addEventListener('click',() => {
 zero.addEventListener('click', ()=>{
     console.log('clicked zero');
     document.querySelector('.idk').innerText += 0;
-})
+});
 period.addEventListener('click', ()=>{
     console.log('clicked period');
     document.querySelector('.idk').innerText += '.';
-})
+});
 
 
 
 plus.addEventListener('click', ()=>{
     console.log('clicked plus');
     document.querySelector('.idk').innerText += '+';
-})
+});
 minus.addEventListener('click', ()=>{
     console.log('clicked minus');
     document.querySelector('.idk').innerText += '-';
-})
+});
 mul.addEventListener('click', ()=>{
     console.log('clicked mul');
     document.querySelector('.idk').innerText += '*';
-})
+});
 divide.addEventListener('click', ()=>{
     console.log('clicked divide');
     document.querySelector('.idk').innerText += '/';
-})
+});
