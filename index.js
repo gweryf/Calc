@@ -17,6 +17,10 @@ const minus = document.querySelector('.minus');
 const mul = document.querySelector('.mul');
 const divide = document.querySelector('.divide');
 
+// selecting clear and delete buttons
+const clear = document.querySelector('.clear'); 
+const del = document.querySelector('.del')
+
 // adding basic functionality to all buttons
 
 one.addEventListener('click',() => {
@@ -82,3 +86,16 @@ divide.addEventListener('click', ()=>{
     console.log('clicked divide');
     document.querySelector('.idk').innerText += '/';
 });
+
+
+clear.addEventListener('click', function(){
+    document.querySelector('.idk').innerText = '';
+});
+
+del.addEventListener('click', function(){
+    document.querySelector('.idk').innerText = '';
+});
+
+function operate () {
+
+}
