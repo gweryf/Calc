@@ -96,6 +96,17 @@ del.addEventListener('click', function(){
     document.querySelector('.idk').innerText = '';
 });
 
-function operate () {
-
+function operate (a, b, operator) {
+    a = Number(a);
+    b = Number(b);
+    let ans = 0;
+    if (operator == '+') {
+        ans = Integer(a) + Integer(b);
+    } else if (operator == '-') {
+        ans = Integer(a) - Integer(b);
+    } else if (operator == '*') {
+        ans = Integer(a) - Integer(b);
+    } else {
+        ans = Integer(a) / Integer(b);
+    }
 }
