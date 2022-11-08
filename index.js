@@ -70,3 +70,7 @@ equalsButton.addEventListener('click',()=>{
     currentoperand.innerText = evaluate(currentoperand.innerText, previousoperand.innerText)
     previousoperand.innerText = ''
 })
+
+delButton.addEventListener('click',()=>{
+    currentoperand.innerText = currentoperand.innerText.slice(0,-1)
+})
