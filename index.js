@@ -1,112 +1,72 @@
-// selecting number buttons
-const one = document.querySelector('.one');
-const two = document.querySelector('.two');
-const three = document.querySelector('.three');
-const four = document.querySelector('.four');
-const five = document.querySelector('.five');
-const six = document.querySelector('.six');
-const seven = document.querySelector('.seven');
-const eight = document.querySelector('.eight');
-const nine = document.querySelector('.nine');
-const zero = document.querySelector('.zero');
-const period = document.querySelector('.period')
-
-// selecting operation buttons
-const plus = document.querySelector('.plus');
-const minus = document.querySelector('.minus');
-const mul = document.querySelector('.mul');
-const divide = document.querySelector('.divide');
-
-// selecting clear and delete buttons
-const clear = document.querySelector('.clear'); 
-const del = document.querySelector('.del')
-
-// adding basic functionality to all buttons
-
-one.addEventListener('click',() => {
-    console.log('clicked one');
-    document.querySelector('.idk').innerText += 1;
-});
-two.addEventListener('click',() => {
-    console.log('clicked two');
-    document.querySelector('.idk').innerText += 2;
-});
-three.addEventListener('click',() => {
-    console.log('clicked three');
-    document.querySelector('.idk').innerText += 3;
-});
-four.addEventListener('click',() => {
-    console.log('clicked four');
-    document.querySelector('.idk').innerText += 4;
-});
-five.addEventListener('click',() => {
-    console.log('clicked five');
-    document.querySelector('.idk').innerText += 5;
-});
-six.addEventListener('click',() => {
-    console.log('clicked six');
-    document.querySelector('.idk').innerText += 6;
-});
-seven.addEventListener('click',() => {
-    console.log('clicked seven');
-    document.querySelector('.idk').innerText += 7;
-});
-eight.addEventListener('click',() => {
-    console.log('clicked eight');
-    document.querySelector('.idk').innerText += 8;
-});
-nine.addEventListener('click',() => {
-    console.log('clicked nine');
-    document.querySelector('.idk').innerText += 9;
-});
-zero.addEventListener('click', ()=>{
-    console.log('clicked zero');
-    document.querySelector('.idk').innerText += 0;
-});
-period.addEventListener('click', ()=>{
-    console.log('clicked period');
-    document.querySelector('.idk').innerText += '.';
-});
+// selecting various buttons for the calculator
+const numberButton = document.querySelectorAll('[data-number]')
+const operationButtons = document.querySelectorAll('[data-operation]')
+const equalsButton = document.querySelector('[data-equals]')
+const delButton = document.querySelector('[data-delete]')
+const alcButton = document.querySelector('[data-all-clear]')
+const previousoperand = document.querySelector('[data-previous-operand]')
+const currentoperand = document.querySelector('[data-current-operand]')
 
 
-
-plus.addEventListener('click', ()=>{
-    console.log('clicked plus');
-    document.querySelector('.idk').innerText += '+';
-});
-minus.addEventListener('click', ()=>{
-    console.log('clicked minus');
-    document.querySelector('.idk').innerText += '-';
-});
-mul.addEventListener('click', ()=>{
-    console.log('clicked mul');
-    document.querySelector('.idk').innerText += '*';
-});
-divide.addEventListener('click', ()=>{
-    console.log('clicked divide');
-    document.querySelector('.idk').innerText += '/';
-});
-
-
-clear.addEventListener('click', function(){
-    document.querySelector('.idk').innerText = '';
-});
-
-del.addEventListener('click', function(){
-    document.querySelector('.idk').innerText = '';
-});
-
-function operate (a, b, operator) {
-    a = Number(a);
-    b = Number(b);
-    let ans = 0;
-    if (operator == '+') {
-        ans = Integer(a) + Integer(b);
-    } else if (operator == '-') {
-        ans = Integer(a) - Integer(b);
-    } else if (operator == '*') {
-        ans = Integer(a) - Integer(b);
-    } else {
-        ans = Integer(a) / Integer(b);
+let operator = '+'
+// creating function to evaluate the numbers
+function evaluate (previousoperand, currentoperand) {
+    console.log(previousoperand);
+    console.log(currentoperand);
+    let result = 0
+    let previous = parseFloat(previousoperand)
+    let  current = parseFloat(currentoperand)
+    switch(operator) {
+        case '+':
+            result = previous+current
+            break
+        case '-':
+            result = previous-current
+            break
+        case '*':
+            result = previous*current
+            break
+        case '/':
+            result = previous/current
+            break
+        default:
+            return
     }
+    return result
 }
+
+numberButton.forEach(button=>{
+    button.addEventListener('click', (e)=>{
+        console.log(e.target);
+        currentoperand.innerText += e.target.innerText 
+    })
+})
+
+operationButtons.forEach(button=>{
+    button.addEventListener('click', (e)=>{
+        if (currentoperand.innerText === '') return
+        if (previousoperand.innerText !== '') {
+            console.log(evaluate(currentoperand.innerText, previousoperand.innerText));
+            previousoperand.innerText = evaluate(currentoperand.innerText, previousoperand.innerText)
+            currentoperand.innerText = ''
+        } else {
+            previousoperand.innerText = currentoperand.innerText 
+        }
+        console.log(e.target);
+        operator = e.target.innerText
+        currentoperand.innerText += e.target.innerText 
+        // previousoperand.innerText = currentoperand.innerText
+        currentoperand.innerText = ''
+    })
+})
+
+alcButton.addEventListener('click',()=>{
+    currentoperand.innerText = ''
+    previousoperand.innerText = ''
+})
+
+equalsButton.addEventListener('click',()=>{
+    if(previousoperand.innerText === '' || currentoperand.innerText === '') return
+    currentoperand.innerText = evaluate(currentoperand.innerText, previousoperand.innerText)
+    previousoperand.innerText = ''
+})
