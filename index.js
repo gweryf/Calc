@@ -27,7 +27,7 @@ function evaluate (previousoperand, currentoperand) {
             result = previous*current
             break
         case '÷':
-            result = previous/current
+            result = current/previous
             break
         default:
             return
