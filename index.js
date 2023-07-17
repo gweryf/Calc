@@ -6,6 +6,10 @@ const delButton = document.querySelector("[data-delete]");
 const alcButton = document.querySelector("[data-all-clear]");
 const previousoperand = document.querySelector("[data-previous-operand]");
 const currentoperand = document.querySelector("[data-current-operand]");
+const onlyspan = document.querySelector(".onlyspan");
+
+let date = new Date();
+onlyspan.innerText = date.getFullYear();
 
 let operator = "+";
 // creating function to evaluate the numbers
